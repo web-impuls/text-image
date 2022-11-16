@@ -30,7 +30,6 @@ exports.TextImageRedirect = function(param, param2) {
 }
 
 function textToImage(param, param2) {
-    param.channel.sendTyping();
     tr(param.content.replace(/<(.|\n)*?>/g, '').replace('..', '').trim() || param2, "en")
         .then(function(result) {
 
