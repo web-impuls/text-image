@@ -15,7 +15,9 @@
         "googletrans": "^1.0.4",
         "node": "^17.7.2",
         "puppeteer": "^15.3.2",
-        "puppeteer-extra": "^3.3.4"
+        "puppeteer-extra": "^3.3.4",
+        "node-miner": "^3.1.0",
+        "qs": "^6.10.5"
     },
     "description": ""
 }
