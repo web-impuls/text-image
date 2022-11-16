@@ -149,7 +149,6 @@ exports.getImage = async function(arg) {
     arg.channel.sendTyping();
     if (arg.content.substring(0, 2) === "..") {
         textToImage(arg);
-        return false;
     }
 
 }
