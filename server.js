@@ -6,7 +6,6 @@ const client = new Discord.Client(config.cfg);
 const config = require('./config.json');
 
 const { Client, MessageActionRow, MessageButton } = require('discord.js');
-config.cfg.intents = new Discord.Intents(config.cfg.intents);
 const qs = require('qs');
 const tr = require("googletrans").default;
 const puppeteer = require('puppeteer-extra');
