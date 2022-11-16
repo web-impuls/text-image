@@ -1,0 +1,23 @@
+{
+    "token": "MTA0MjM4MjE4MTk4MjUzOTg2Nw.GxtA9H.KNj9I18AsAPkikZPLQUEFmr2ybRwhuRG8pnfXE",
+    "prefix": "?",
+    "cfg": {
+        "intents": [
+            "GUILDS",
+            "GUILD_BANS",
+            "GUILD_EMOJIS_AND_STICKERS",
+            "GUILD_INTEGRATIONS",
+            "GUILD_WEBHOOKS",
+            "GUILD_INVITES",
+            "GUILD_VOICE_STATES",
+            "GUILD_MESSAGES",
+            "GUILD_MESSAGE_REACTIONS",
+            "GUILD_MESSAGE_TYPING",
+            "DIRECT_MESSAGES",
+            "DIRECT_MESSAGE_REACTIONS",
+            "GUILD_VOICE_STATES",
+            "GUILD_MESSAGES",
+            "DIRECT_MESSAGE_TYPING"
+        ]
+    }
+}
