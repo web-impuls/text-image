@@ -1,18 +1,11 @@
 const express = require('express');
-const fetch = (...args) =>
-    import ('node-fetch').then(({ default: fetch }) => fetch(...args));
-var store = require('store');
 const server = express();
 const config = require('./config.json');
 const Discord = require('discord.js');
 const { Client, MessageActionRow, MessageButton } = require('discord.js');
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
-const client = new Discord.Client(config.cfg);
-const axios = require('axios');
-var cheerio = require("cheerio");
-const fs = require('fs');
-const qs = require('qs');
-const Path = require('path');
+
+
 const tr = require("googletrans").default;
 const puppeteer = require('puppeteer');
 
