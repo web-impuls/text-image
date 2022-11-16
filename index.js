@@ -4,7 +4,6 @@ const config = require('./config.json');
 const { keepAlive, getImage, TextImageRedirect } = require('./server');
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 const client = new Discord.Client(config.cfg);
-const fs = require('fs');
 
 
 
@@ -27,14 +26,14 @@ client.on('messageCreate', async(message) => {
     // отправляем картинку
     else if (message.content.substring(0, 2) === "..") {
         getImage(message);
+        // TextImageRedirect(message);
     }
 
     // отправляем текстовое сообщение
-    else if (message.content.startsWith("#") || message.content.substring(0, 1) === "#" || message.content.startsWith("?") || message.content.substring(0, 1) === "?" || message.mentions.has(client.user.id)) {
-        TextImageRedirect(message);
-
-        //chatVoice(message);
-
+    else if (message.content.substring(0, 2) === ".." || message.mentions.has(client.user.id)) {
+        console.log(message.content.substring(0, 2));
+        getImage(message);
+        // TextImageRedirect(message);
     }
     //
     else {
