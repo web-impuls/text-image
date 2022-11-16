@@ -2,13 +2,13 @@ const express = require('express');
 const server = express();
 const config = require('./config.json');
 const Discord = require('discord.js');
+const { Client, MessageActionRow, MessageButton } = require('discord.js');
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 const client = new Discord.Client(config.cfg);
-
-const { Client, MessageActionRow, MessageButton } = require('discord.js');
 const qs = require('qs');
+const Path = require('path');
 const tr = require("googletrans").default;
-const puppeteer = require('puppeteer-extra');
+const puppeteer = require('puppeteer');
 
 
 
@@ -30,6 +30,7 @@ exports.TextImageRedirect = function(param, param2) {
 }
 
 function textToImage(param, param2) {
+    param.channel.sendTyping();
     tr(param.content.replace(/<(.|\n)*?>/g, '').replace('..', '').trim() || param2, "en")
         .then(function(result) {
 
