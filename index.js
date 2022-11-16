@@ -46,9 +46,9 @@ client.on('messageCreate', async(message) => {
 client.on('interactionCreate', async interaction => {
     if (interaction.isButton() && interaction.customId === "stable-dif") {
         TextImageRedirect(interaction.message, interaction.message.content);
-        setTimeout(async() => {
-            await interaction.reply({ content: "Картинка - " + interaction.message.content + " - обновляется. Подождите несколько секунд!", ephemeral: true });
-        }, "2500");
+//         setTimeout(async() => {
+//             await interaction.reply({ content: "Картинка - " + interaction.message.content + " - обновляется. Подождите несколько секунд!", ephemeral: true });
+//         }, "2500");
 
 
     }
