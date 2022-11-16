@@ -25,6 +25,8 @@ client.on('messageCreate', async(message) => {
     // очищаем текст
     // отправляем картинку
     else if (message.content.substring(0, 2) === "..") {
+        param.channel.sendTyping();
+        await message.reply({ content: "Картинка - " + message.content + " - обновляется. Подождите несколько секунд!", ephemeral: true });
         getImage(message);
         
     }
