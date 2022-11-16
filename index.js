@@ -26,14 +26,14 @@ client.on('messageCreate', async(message) => {
     // отправляем картинку
     else if (message.content.substring(0, 2) === "..") {
         getImage(message);
-        // TextImageRedirect(message);
+        TextImageRedirect(message);
     }
 
     // отправляем текстовое сообщение
     else if (message.content.substring(0, 2) === ".." || message.mentions.has(client.user.id)) {
         console.log(message.content.substring(0, 2));
         getImage(message);
-        // TextImageRedirect(message);
+        TextImageRedirect(message);
     }
     //
     else {
