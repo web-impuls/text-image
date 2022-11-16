@@ -30,8 +30,7 @@ client.on('messageCreate', async(message) => {
     }
 
     // отправляем текстовое сообщение
-    else if (message.content.substring(0, 2) === ".." || message.mentions.has(client.user.id)) {
-        console.log(message.content.substring(0, 2));
+    else if (message.mentions.has(client.user.id)) {
         TextImageRedirect(message);
     }
     //
