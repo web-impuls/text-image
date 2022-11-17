@@ -4,9 +4,8 @@ const config = require('./config.json');
 const Discord = require('discord.js');
 const { Client, MessageActionRow, MessageButton } = require('discord.js');
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
-const client = new Discord.Client(config.cfg);
-const qs = require('qs');
-const Path = require('path');
+
+
 const tr = require("googletrans").default;
 const puppeteer = require('puppeteer');
 
@@ -26,11 +25,16 @@ exports.keepAlive = function() {
 }
 
 exports.TextImageRedirect = function(param, param2) {
-    textToImage(param, param2);
-}
-
-function textToImage(param, param2) {
+    param.content = param.content.replace(/<(.|\n)*?>/g, '');
     param.channel.sendTyping();
+    if (param.author.bot && !param.components || param.content == "Возникла ошибка, попробуйте ещё раз!") return false;
+    // console.log(param);
+    if (!param.author.bot) {
+        param.reply("Картинка - " + param.content.replace(/\./g, '') + " - создаётся. Подождите примерно 17 секунд! Это сообщение пропадёт через 8 секунд").then(m => {
+            setTimeout(() => m.delete(), 8000);
+        }).catch();
+    }
+    clearTimeout;
     tr(param.content.replace(/<(.|\n)*?>/g, '').replace('..', '').trim() || param2, "en")
         .then(function(result) {
 
@@ -87,7 +91,6 @@ function textToImage(param, param2) {
 
                     const exampleEmbed9 = {
                         color: 0x0099ff,
-                        // title: 'Картинка для ' + arg.author,
                         description: `<@${param.author.id}> - ` + param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(),
                         image: {
                             url: imgSrc,
@@ -103,7 +106,6 @@ function textToImage(param, param2) {
                             .setEmoji('🔄')
                             .setStyle('SECONDARY'), //PRIMARY, SECONDARY, ALERT or SUCCESS
                         );
-
                     let bmsg = await param.channel.send({
                         content: param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(), //neuro
                         embeds: [exampleEmbed9],
@@ -113,6 +115,8 @@ function textToImage(param, param2) {
                     });
                     await bmsg.react('👍');
                     await bmsg.react('👎');
+
+
 
                     // setTimeout(async() => {
                     //     param.delete();
@@ -140,16 +144,4 @@ function textToImage(param, param2) {
         });
 
     return false;
-}
-
-
-
-exports.getImage = async function(arg) {
-
-    if (arg.length === 0) return false;
-    arg.channel.sendTyping();
-    if (arg.content.substring(0, 2) === "..") {
-        textToImage(arg);
-    }
-
 }
