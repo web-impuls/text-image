@@ -1,12 +1,9 @@
 const Discord = require('discord.js');
 const { Client, MessageActionRow, MessageButton } = require('discord.js');
 const config = require('./config.json');
-const { keepAlive, getImage, TextImageRedirect } = require('./server');
+const { keepAlive, TextImageRedirect } = require('./server');
 config.cfg.intents = new Discord.Intents(config.cfg.intents);
 const client = new Discord.Client(config.cfg);
-
-
-
 
 
 client.login(config.token);
@@ -22,16 +19,14 @@ client.on('messageCreate', async(message) => {
     }
     //
     else if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
-    // очищаем текст
-    // отправляем картинку
+
     else if (message.content.substring(0, 2) === "..") {
-        getImage(message);
+        TextImageRedirect(message);
     }
 
     // отправляем текстовое сообщение
-    else if (message.content.substring(0, 2) === ".." || message.mentions.has(client.user.id)) {
-        console.log(message.content.substring(0, 2));
-        getImage(message);
+    else if (message.mentions.has(client.user.id)) {
+        TextImageRedirect(message);
     }
     //
     else {
@@ -45,8 +40,7 @@ client.on('interactionCreate', async interaction => {
     if (interaction.isButton() && interaction.customId === "stable-dif") {
         TextImageRedirect(interaction.message, interaction.message.content);
 
-        await interaction.reply({ content: "Картинка - " + interaction.message.content + " - обновляется. Подождите несколько секунд!", ephemeral: true });
-
+        await interaction.reply({ content: "Картинка - " + interaction.message.content + " - обновляется. Подождите примерно 17 секунд!", ephemeral: true });
 
 
     }
