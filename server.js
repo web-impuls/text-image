@@ -14,46 +14,7 @@ const client = new Discord.Client(config.cfg);
 
 
 server.all('/', (req, res) => {
-    client.login(config.token);
-
-    client.on('ready', async(r) => {
-        console.log('сообщение из сервера');
-    });
-    client.on('messageCreate', async(message) => {
-        // блокируем пустое сообщение
-        if (!message.content.replace(/<(.|\n)*?>/g, '').trim()) {
-            return false;
-        }
-        //
-        else if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
-
-        else if (message.content.substring(0, 2) === "..") {
-            TextImageRedirect(message);
-        }
-
-        // отправляем текстовое сообщение
-        else if (message.mentions.has(client.user.id)) {
-            TextImageRedirect(message);
-        }
-        //
-        else {
-            return;
-        }
-
-
-    });
-
-    client.on('interactionCreate', async interaction => {
-        if (interaction.isButton() && interaction.customId === "stable-dif") {
-            TextImageRedirect(interaction.message, interaction.message.content);
-
-            await interaction.reply({ content: "Картинка - " + interaction.message.content + " - обновляется. Подождите примерно 17 секунд!", ephemeral: true });
-
-
-        }
-
-
-    })
+    
     res.send('бот запускается');
 });
 
@@ -65,7 +26,7 @@ exports.keepAlive = function() {
     });
 }
 
-const TextImageRedirect = function(param, param2) {
+exports.TextImageRedirect = function(param, param2) {
     param.content = param.content.replace(/<(.|\n)*?>/g, '');
     param.channel.sendTyping();
     if (param.author.bot && !param.components || param.content == "Возникла ошибка, попробуйте ещё раз!") return false;
