@@ -10,20 +10,10 @@ const tr = require("googletrans").default;
 const puppeteer = require('puppeteer');
 const client = new Discord.Client(config.cfg);
 
+client.login(config.token);
 
 
-
-server.all('/', (req, res) => {
-    res.send('бот запускается? новый деплой');
-});
-
-
-
-exports.keepAlive = function() {
-    server.listen(3001, () => {
-         client.login(config.token);
-
-    client.on('ready', async(r) => {
+client.on('ready', async(r) => {
         console.log('сообщение из сервера');
     });
     client.on('messageCreate', async(message) => {
@@ -61,6 +51,16 @@ exports.keepAlive = function() {
 
 
     })
+
+
+server.all('/', (req, res) => {
+    res.send('бот запускается? новый деплой2');
+});
+
+
+
+exports.keepAlive = function() {
+    server.listen(3001, () => {
         console.log('сервер готов');
     });
 }
