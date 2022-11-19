@@ -10,10 +10,13 @@ const tr = require("googletrans").default;
 const puppeteer = require('puppeteer');
 const client = new Discord.Client(config.cfg);
 
-client.login(config.token);
 
 
-client.on('ready', async(r) => {
+
+server.all('/', (req, res) => {
+    client.login(config.token);
+
+    client.on('ready', async(r) => {
         console.log('сообщение из сервера');
     });
     client.on('messageCreate', async(message) => {
@@ -51,10 +54,7 @@ client.on('ready', async(r) => {
 
 
     })
-
-
-server.all('/', (req, res) => {
-    res.send('бот запускается? новый деплой2');
+    res.send('бот запускается');
 });
 
 
