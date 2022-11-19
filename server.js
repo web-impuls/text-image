@@ -14,7 +14,14 @@ const client = new Discord.Client(config.cfg);
 
 
 server.all('/', (req, res) => {
-    client.login(config.token);
+    res.send('бот запускается? новый деплой');
+});
+
+
+
+exports.keepAlive = function() {
+    server.listen(3001, () => {
+         client.login(config.token);
 
     client.on('ready', async(r) => {
         console.log('сообщение из сервера');
@@ -54,13 +61,6 @@ server.all('/', (req, res) => {
 
 
     })
-    res.send('бот запускается? новый деплой');
-});
-
-
-
-exports.keepAlive = function() {
-    server.listen(3001, () => {
         console.log('сервер готов');
     });
 }
