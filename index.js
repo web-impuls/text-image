@@ -21,11 +21,13 @@ client.on('messageCreate', async(message) => {
 
     else if (message.content.substring(0, 2) === "..") {
         TextImageRedirect(message);
+        return false;
     }
 
     // отправляем текстовое сообщение
     else if (message.mentions.has(client.user.id)) {
         TextImageRedirect(message);
+        return false;
     }
     //
     else {
