@@ -49,15 +49,15 @@ exports.TextImageRedirect = async function(param, param2) {
 
             (async function() {
                 const massPromt = [
-                    'highly detailed, d & d, highly detailed, digital painting, trending on artstation, concept art, sharp focus, illustration, global illumination, ray tracing, realistic shaded, super detailed picture, the smallest drawing of details, 4k, octane ,pastel halftones',
+                    'illustration, art by artgerm and greg rutkowski and alphonse mucha, global illumination, ray tracing, realistic shaded, super detailed picture, the smallest drawing of details, 4k, octane ,pastel halftones',
 
                     'golden hour, awesome atmosphere, 8 k, octane rendered, sharp focus, highly detailed, volumetric lighting, illustration, concept art, paint texture, intricate,super detailed picture, the smallest drawing of details, 4k, octane  ,pastel halftones',
 
-                    'trending on artstation,super detailed picture, the smallest drawing of details, 4k, octane ,pastel halftones',
+                    'trending on artstation,super detailed picture, art by artgerm and greg rutkowski and alphonse mucha, pastel halftones',
 
                     'behance hd, artstation, deviantart, global illumination radiating a glowing aura global illumination ray tracing hdr render in unreal engine 5,super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones',
 
-                    'digital painting, highly detailed, artstation, sharp focus, illustration, concept art,amazing composition, fractal flame,super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones',
+                    'art by artgerm and greg rutkowski and alphonse mucha, super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones',
 
                     'ultra-detailed, uhd 8k cryengine, octane render,super detailed picture, the smallest drawing of details, 4k, highly detailed, digital painting, artstation, concept art, sharp focus, illustration, cinematic lighting, high detail, artstation, octane render, 4 k resolution, masterpiece,pastel halftones',
 
@@ -81,20 +81,22 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
 
-                    await page.goto('https://replicate.com/stability-ai/stable-diffusion/versions/8abccf52e7cba9f6e82317253f4a3549082e966db5584e92c808ece132037776/');
-                    await page.waitForTimeout('input[name="prompt"]');
-                    await page.$eval('input[name="prompt"]', el => el.value = '');
-                    await page.type('input[name="prompt"]', neuro + ' ' + massText, { delay: 5 });
+                    await page.goto('https://www.mage.space/');
+                    await page.waitForTimeout('#search-bar');
+                    await page.$eval('#search-bar', el => el.value = '');
+                    await page.type('#search-bar', neuro + ' ' + massText, { delay: 2 });
                     // await page.$eval('input[name="num_inference_steps"]', el => el.value = '');
                     // await page.type('input[name="num_inference_steps"]', '30', { delay: 5 });
-                    await page.$eval('input[name="guidance_scale"]', el => el.value = '');
-                    await page.type('input[name="guidance_scale"]', '20', { delay: 5 });
-                    await page.click('#run > div > div > div > div.flex-1.min-w-0.pr-lh > form > button.form-button.mr-2.relative');
+                    // await page.$eval('input[name="guidance_scale"]', el => el.value = '');
+                    // await page.type('input[name="guidance_scale"]', '20', { delay: 5 });
+                    await page.click('#__next > div > div > div > main > div > div > div.mantine-Group-root.mantine-5f6x53 > button:nth-child(1)');
+                    await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(3) > div.mantine-Group-root.mantine-5f6x53 > div > button:nth-child(4)');
+                    await page.click('#ZQvTCDloXyqgqlOiDvup');
 
                     // setTimeout(async() => {
                     // }, "1000");
-                    await page.waitForSelector('#run > div > div > div > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div > a > img');
-                    const imgSrc = await page.$eval('#run > div > div > div > div:nth-child(2) > div > div:nth-child(2) > div > div > div > div > a > img', (el) => el.getAttribute('src'));
+                    await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img');
+                    const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
 
                     const exampleEmbed9 = {
                         color: 0x0099ff,
