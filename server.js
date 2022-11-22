@@ -7,6 +7,7 @@ config.cfg.intents = new Discord.Intents(config.cfg.intents);
 let fetch = require('node-fetch');
 
 const puppeteer = require('puppeteer');
+const { Cluster } = require('puppeteer-cluster');
 const client = new Discord.Client(config.cfg);
 
 
@@ -49,13 +50,13 @@ exports.TextImageRedirect = async function(param, param2) {
 
             (async function() {
                 const massPromt = [
-                    'realistic shaded, super detailed picture, 4k, octane ,pastel halftones,in the style of Midjourney v4',
+                    'super detailed picture, 4k, octane ,pastel halftones,in the style of Midjourney v4',
 
                     'awesome atmosphere, 8 k, octane rendered, sharp focus, highly detailed, volumetric lighting, illustration, concept art, paint texture, intricate,super detailed picture, the smallest drawing of details, 4k, octane  ,pastel halftones,in the style of Midjourney v4',
 
                     'super detailed picture, art by greg rutkowski and alphonse mucha, pastel halftones,in the style of Midjourney v4',
 
-                    'global illumination radiating a glowing aura global illumination ray tracing hdr render in unreal engine 5,super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!,in the style of Midjourney v4',
+                    'global illumination , super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!,in the style of Midjourney v4',
 
                     'greg rutkowski and alphonse mucha, super detailed picture, the smallest drawing of details, 4k, octane,in the style of Midjourney v4',
 
@@ -65,7 +66,7 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     'studio quality,super detailed picture, the smallest drawing of details, 4k, octane, illustration,pastel halftones, art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!! ,in the style of Midjourney v4',
 
-                    'trending on pinterest, artstation,pastel halftones ,in the style of Midjourney v4',
+                    'trending on pinterest, artstation, pastel halftones ,in the style of Midjourney v4',
 
                     'elegant, glowing lights, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, alphonse muchas,super detailed picture,drawing of details, 4k, octanem,in the style of Midjourney v4'
                 ];
@@ -77,7 +78,7 @@ exports.TextImageRedirect = async function(param, param2) {
                     args: ['--no-sandbox', '--disable-setuid-sandbox']
                 });
                 const page = await browser.newPage();
-                await page.setDefaultTimeout(45000);
+                await page.setDefaultTimeout(0);
 
                 try {
 
