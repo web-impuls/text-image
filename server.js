@@ -72,7 +72,7 @@ exports.TextImageRedirect = async function(param, param2) {
                 let massText = massPromt[Math.floor(Math.random() * massPromt.length)];
 
                 const browser = await puppeteer.launch({
-                    headless: false,
+                    headless: true,
                     args: ['--no-sandbox', '--disable-setuid-sandbox']
                 });
                 const page = await browser.newPage();
