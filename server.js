@@ -55,7 +55,7 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     'trending on artstation,super detailed picture, art by artgerm and greg rutkowski and alphonse mucha, pastel halftones',
 
-                    'behance hd, artstation, deviantart, global illumination radiating a glowing aura global illumination ray tracing hdr render in unreal engine 5,super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones',
+                    'behance hd, artstation, deviantart, global illumination radiating a glowing aura global illumination ray tracing hdr render in unreal engine 5,super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!',
 
                     'art by artgerm and greg rutkowski and alphonse mucha, super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones',
 
@@ -63,7 +63,7 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     'insanely detailed,intricate detail, cinematic, 8 k, featured on artstation, pixiv,super detailed picture, the smallest drawing of details, 4k, octane ,realistic,pastel halftones',
 
-                    'detailed portrait, cell shaded, 4 k, concept art, artgerm,cinematic dramatic atmosphere, sharp focus, volumetric lighting, cinematic lighting, studio quality,super detailed picture, the smallest drawing of details, 4k, octane, illustration,pastel halftones',
+                    'detailed portrait, cell shaded, 4 k, concept art, artgerm,cinematic dramatic atmosphere, sharp focus, volumetric lighting, cinematic lighting, studio quality,super detailed picture, the smallest drawing of details, 4k, octane, illustration,pastel halftones, art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!',
 
                     'higher contrasts, (((lumnious))), theatrical, character concept art by ruan jia, and j.dickenson, trending on pinterest, artstation,pastel halftones',
 
