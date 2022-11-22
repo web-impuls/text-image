@@ -49,23 +49,23 @@ exports.TextImageRedirect = async function(param, param2) {
 
             (async function() {
                 const massPromt = [
-                    'illustration, art by artgerm and greg rutkowski and alphonse mucha, global illumination, ray tracing, realistic shaded, super detailed picture, the smallest drawing of details, 4k, octane ,pastel halftones',
+                    'ray tracing, realistic shaded, super detailed picture, the smallest drawing of details, 4k, octane ,pastel halftones,in the style of Midjourney v4',
 
-                    'golden hour, awesome atmosphere, 8 k, octane rendered, sharp focus, highly detailed, volumetric lighting, illustration, concept art, paint texture, intricate,super detailed picture, the smallest drawing of details, 4k, octane  ,pastel halftones',
+                    'golden hour, awesome atmosphere, 8 k, octane rendered, sharp focus, highly detailed, volumetric lighting, illustration, concept art, paint texture, intricate,super detailed picture, the smallest drawing of details, 4k, octane  ,pastel halftones,in the style of Midjourney v4',
 
-                    'trending on artstation,super detailed picture, art by artgerm and greg rutkowski and alphonse mucha, pastel halftones',
+                    'trending on artstation,super detailed picture, art by artgerm and greg rutkowski and alphonse mucha, pastel halftones,in the style of Midjourney v4',
 
-                    'behance hd, artstation, deviantart, global illumination radiating a glowing aura global illumination ray tracing hdr render in unreal engine 5,super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!',
+                    'global illumination radiating a glowing aura global illumination ray tracing hdr render in unreal engine 5,super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!,in the style of Midjourney v4',
 
-                    'art by artgerm and greg rutkowski and alphonse mucha, super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones',
+                    'art by artgerm and greg rutkowski and alphonse mucha, super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones,in the style of Midjourney v4',
 
-                    'ultra-detailed, uhd 8k cryengine, octane render,super detailed picture, the smallest drawing of details, 4k, highly detailed, digital painting, artstation, concept art, sharp focus, illustration, cinematic lighting, high detail, artstation, octane render, 4 k resolution, masterpiece,pastel halftones',
+                    'highly detailed, digital painting, artstation, concept art, sharp focus, illustration, cinematic lighting, high detail, artstation, octane render, 4 k resolution, masterpiece,pastel halftones ,in the style of Midjourney v4',
 
                     'insanely detailed,intricate detail, cinematic, 8 k, featured on artstation, pixiv,super detailed picture, the smallest drawing of details, 4k, octane ,realistic,pastel halftones',
 
-                    'detailed portrait, cell shaded, 4 k, concept art, artgerm,cinematic dramatic atmosphere, sharp focus, volumetric lighting, cinematic lighting, studio quality,super detailed picture, the smallest drawing of details, 4k, octane, illustration,pastel halftones, art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!',
+                    'studio quality,super detailed picture, the smallest drawing of details, 4k, octane, illustration,pastel halftones, art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!! ,in the style of Midjourney v4',
 
-                    'higher contrasts, (((lumnious))), theatrical, character concept art by ruan jia, and j.dickenson, trending on pinterest, artstation,pastel halftones',
+                    'trending on pinterest, artstation,pastel halftones ,in the style of Midjourney v4',
 
                     'elegant, glowing lights, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, alphonse muchas,super detailed picture,drawing of details, 4k, octanem,pastel halftones'
                 ];
