@@ -103,7 +103,7 @@ exports.TextImageRedirect = async function(param, param2) {
                     // setTimeout(async() => {
                     // }, "1000");
 
-                    await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img');
+                    await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img').then(() => {});
 
                     const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
 
