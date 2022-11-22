@@ -87,7 +87,7 @@ exports.TextImageRedirect = async function(param, param2) {
                         monitor: true,
                         timeout: 100000,
                         puppeteerOptions: {
-                            headless: false,
+                            headless: true,
                             args: ['--no-sandbox', '--disable-setuid-sandbox'],
                             // defaultViewport: false,
                             // userDataDir: "./tmp",
