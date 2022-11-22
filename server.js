@@ -65,7 +65,7 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     'detailed portrait, cell shaded, 4 k, concept art, artgerm,cinematic dramatic atmosphere, sharp focus, volumetric lighting, cinematic lighting, studio quality,super detailed picture, the smallest drawing of details, 4k, octane, illustration,pastel halftones',
 
-                    'chilling eastern europen forrest. night, horroristic shadows, higher contrasts, (((lumnious))), theatrical, character concept art by ruan jia, and j.dickenson, trending on pinterest, artstation,pastel halftones',
+                    'higher contrasts, (((lumnious))), theatrical, character concept art by ruan jia, and j.dickenson, trending on pinterest, artstation,pastel halftones',
 
                     'elegant, glowing lights, highly detailed, digital painting, artstation, concept art, smooth, sharp focus, illustration, alphonse muchas,super detailed picture,drawing of details, 4k, octanem,pastel halftones'
                 ];
@@ -82,26 +82,29 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
 
-                    await page.goto('https://www.mage.space/');
+                    // await page.goto('https://www.mage.space/');
+                    await page.goto('https://www.mage.space/', { waitUntil: 'networkidle2' });
+
+
+
                     await page.waitForTimeout('#search-bar');
                     //await page.$eval('#search-bar', el => el.value = neuro + ' ' + massText);
                     await page.type('#search-bar', neuro + ' ' + massText);
-                    // await page.$eval('input[name="num_inference_steps"]', el => el.value = '');
-                    // await page.type('input[name="num_inference_steps"]', '30', { delay: 5 });
-                    // await page.$eval('input[name="guidance_scale"]', el => el.value = '');
-                    // await page.type('input[name="guidance_scale"]', '20', { delay: 5 });
-                    await page.click('#__next > div > div > div > main > div > div > div.mantine-Group-root.mantine-5f6x53 > button:nth-child(1)');
 
-                    await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(2) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
+                    // await page.click('#__next > div > div > div > main > div > div > div.mantine-Group-root.mantine-5f6x53 > button:nth-child(1)');
 
 
-                    await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(3) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
+                    // await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(3) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
+
+                    // await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(2) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
 
                     await page.click('#ZQvTCDloXyqgqlOiDvup');
 
                     // setTimeout(async() => {
                     // }, "1000");
+
                     await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img');
+
                     const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
 
                     const exampleEmbed9 = {
