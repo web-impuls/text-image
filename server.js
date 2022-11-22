@@ -82,6 +82,7 @@ exports.TextImageRedirect = async function(param, param2) {
                     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
 
                     await page.goto('https://www.mage.space/');
+                    await page.setDefaultNavigationTimeout(60000);
                     await page.waitForTimeout('#search-bar');
                     await page.$eval('#search-bar', el => el.value = '');
                     await page.type('#search-bar', neuro + ' ' + massText, { delay: 2 });
@@ -139,6 +140,7 @@ exports.TextImageRedirect = async function(param, param2) {
                 } catch (err) {
 
                     param.reply("Возникла ошибка, попробуйте ещё раз!");
+                    console.log(err);
 
                 }
 
