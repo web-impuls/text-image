@@ -7,12 +7,8 @@ config.cfg.intents = new Discord.Intents(config.cfg.intents);
 let fetch = require('node-fetch');
 
 const puppeteer = require('puppeteer');
-const { Cluster } = require('puppeteer-cluster');
 const client = new Discord.Client(config.cfg);
 
-const urls = [
-    "https://www.mage.space/"
-];
 
 
 server.all('/', (req, res) => {
@@ -51,9 +47,6 @@ exports.TextImageRedirect = async function(param, param2) {
             neuro = data[0][0][0];
             // console.log(neuro);
 
-
-
-
             (async function() {
                 const massPromt = [
                     'realistic shaded, super detailed picture, 4k, octane ,pastel halftones,in the style of Midjourney v4',
@@ -78,104 +71,89 @@ exports.TextImageRedirect = async function(param, param2) {
                 ];
                 let massText = massPromt[Math.floor(Math.random() * massPromt.length)];
 
+                const browser = await puppeteer.launch({
+                    headless: true,
+                    timeout: 100000,
+                    args: ['--no-sandbox', '--disable-setuid-sandbox']
+                });
+                const page = await browser.newPage();
+                await page.setDefaultTimeout(45000);
 
-                (async() => {
+                try {
 
-                    const cluster = await Cluster.launch({
-                        concurrency: Cluster.CONCURRENCY_PAGE,
-                        maxConcurrency: 100,
-                        monitor: true,
-                        timeout: 100000,
-                        puppeteerOptions: {
-                            headless: true,
-                            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-                            // defaultViewport: false,
-                            // userDataDir: "./tmp",
+                    await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
+
+                    // await page.goto('https://www.mage.space/');
+                    await page.goto('https://www.mage.space/', { waitUntil: 'networkidle2' });
+
+
+
+                    await page.waitForTimeout('#search-bar');
+                    //await page.$eval('#search-bar', el => el.value = neuro + ' ' + massText);
+                    await page.type('#search-bar', neuro + ' ' + massText);
+
+                    // await page.click('#__next > div > div > div > main > div > div > div.mantine-Group-root.mantine-5f6x53 > button:nth-child(1)');
+
+
+                    // await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(3) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
+
+                    // await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(2) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
+
+                    await page.click('#ZQvTCDloXyqgqlOiDvup');
+
+                    // setTimeout(async() => {
+                    // }, "1000");
+
+                    await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img').then(() => {});
+
+                    const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
+
+                    const exampleEmbed9 = {
+                        color: 0x0099ff,
+                        description: `<@${param.author.id}> - ` + param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(),
+                        image: {
+                            url: imgSrc,
                         },
-                    });
-
-
-                    cluster.on("taskerror", (err, data) => {
-                        console.log(`Error crawling ${data}: ${err.message}`);
-                    });
-
-                    await cluster.task(async({ page, data: url }) => {
-
-                        try {
-                            await page.goto(url);
-                            // page = await browser.newPage();
-
-                            await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
-
-                            // await page.goto('https://www.mage.space/');
-
-
-
-
-                            await page.waitForSelector('#search-bar', { visible: true });
-                            //await page.$eval('#search-bar', el => el.value = neuro + ' ' + massText);
-                            await page.type('#search-bar', neuro + ' ' + massText);
-
-                            // await page.click('#__next > div > div > div > main > div > div > div.mantine-Group-root.mantine-5f6x53 > button:nth-child(1)');
-
-
-                            // await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(3) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
-
-                            // await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(2) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
-
-                            await page.click('#ZQvTCDloXyqgqlOiDvup');
-
-                            // setTimeout(async() => {
-                            // }, "1000");
-
-                            await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img').then(() => {});
-
-                            const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
-
-                            const exampleEmbed9 = {
-                                color: 0x0099ff,
-                                description: `<@${param.author.id}> - ` + param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(),
-                                image: {
-                                    url: imgSrc,
-                                },
-                            }
-
-
-                            const row = new MessageActionRow()
-                                .addComponents(
-                                    new MessageButton()
-                                    .setCustomId("stable-dif") // It is better to have a unique ID for the buttons
-                                    .setLabel('')
-                                    .setEmoji('🔄')
-                                    .setStyle('SECONDARY'), //PRIMARY, SECONDARY, ALERT or SUCCESS
-                                );
-                            let bmsg = await param.channel.send({
-                                content: param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(), //neuro
-                                embeds: [exampleEmbed9],
-                                components: [row]
-                                    // embeds: [exampleEmbed9], 
-                                    // components: [row] 
-                            });
-                            // await param.channel.send(massText);
-
-                            await bmsg.react('👍');
-                            await bmsg.react('👎');
-
-                        } catch (err) {
-
-                            param.reply("Возникла ошибка, попробуйте ещё раз!");
-                            console.log(err);
-
-                        }
-                    });
-
-                    for (const url of urls) {
-                        await cluster.queue(url);
                     }
 
-                    await cluster.idle();
-                    await cluster.close();
-                })();
+
+                    const row = new MessageActionRow()
+                        .addComponents(
+                            new MessageButton()
+                            .setCustomId("stable-dif") // It is better to have a unique ID for the buttons
+                            .setLabel('')
+                            .setEmoji('🔄')
+                            .setStyle('SECONDARY'), //PRIMARY, SECONDARY, ALERT or SUCCESS
+                        );
+                    let bmsg = await param.channel.send({
+                        content: param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(), //neuro
+                        embeds: [exampleEmbed9],
+                        components: [row]
+                            // embeds: [exampleEmbed9], 
+                            // components: [row] 
+                    });
+                    // await param.channel.send(massText);
+
+                    await bmsg.react('👍');
+                    await bmsg.react('👎');
+
+
+
+                    // setTimeout(async() => {
+                    //     param.delete();
+                    // }, "1000");
+
+
+
+
+                    await browser.close();
+
+                } catch (err) {
+
+                    param.reply("Возникла ошибка, попробуйте ещё раз!");
+                    console.log(err);
+
+                }
 
                 return false;
 
