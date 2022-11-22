@@ -82,7 +82,7 @@ exports.TextImageRedirect = async function(param, param2) {
                     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
 
                     await page.goto('https://www.mage.space/');
-                    await page.setDefaultNavigationTimeout(80000);
+                    await page.setDefaultNavigationTimeout(320000);
                     await page.waitForTimeout('#search-bar');
                     await page.$eval('#search-bar', el => el.value = '');
                     await page.type('#search-bar', neuro + ' ' + massText, { delay: 2 });
@@ -91,7 +91,8 @@ exports.TextImageRedirect = async function(param, param2) {
                     // await page.$eval('input[name="guidance_scale"]', el => el.value = '');
                     // await page.type('input[name="guidance_scale"]', '20', { delay: 5 });
                     await page.click('#__next > div > div > div > main > div > div > div.mantine-Group-root.mantine-5f6x53 > button:nth-child(1)');
-                    await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(3) > div.mantine-Group-root.mantine-5f6x53 > div > button:nth-child(4)');
+                    await page.click('#__next > div > div > div > main > div > div > div.mantine-1avyp1d > div > div > div:nth-child(3) > div.mantine-Group-root.mantine-5f6x53 > div > button.mantine-UnstyledButton-root.mantine-Button-root.mantine-q5ciiw');
+
                     await page.click('#ZQvTCDloXyqgqlOiDvup');
 
                     // setTimeout(async() => {
