@@ -28,13 +28,18 @@ exports.keepAlive = function() {
 exports.TextImageRedirect = async function(param, param2) {
     param.content = param.content.replace(/<(.|\n)*?>/g, '');
     param.channel.sendTyping();
-    if (param.author.bot && !param.components || param.content == "Возникла ошибка, попробуйте ещё раз!") return false;
+    let nameUs = "";
+    if (param.author.bot && !param.components || param.content == "Возникла ошибка, попробуйте ещё раз!") {
+
+        return false;
+    }
     // console.log(param);
     if (!param.author.bot) {
         param.reply("Картинка - " + param.content.replace(/\./g, '') + " - создаётся. Подождите примерно 17 секунд! Это сообщение пропадёт через 8 секунд").then(m => {
             setTimeout(() => m.delete(), 8000);
         }).catch();
     }
+
     clearTimeout;
     let neuro = "";
     var source = 'auto';
@@ -109,9 +114,13 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
 
+
+                    if (param.author.bot) {
+                        nameUs = param.embeds[0]['description'].replace(/ .*/, '').replace(/\D/g, "");
+                    }
                     const exampleEmbed9 = {
                         color: 0x0099ff,
-                        description: `<@${param.author.id}> - ` + param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(),
+                        description: `<@${nameUs || param.author.id }> - Автор этого запроса`,
                         image: {
                             url: imgSrc,
                         },
