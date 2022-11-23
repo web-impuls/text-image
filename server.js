@@ -55,19 +55,19 @@ exports.TextImageRedirect = async function(param, param2) {
 
             (async function() {
                 const massPromt = [
-                    'super detailed picture, 4k, octane ,pastel halftones, extremly detailed digital painting, in the style of Midjourney v4',
+                    'super detailed picture, 4k, octane ,pastel halftones, in the style of Midjourney v4, extremly detailed digital paintingin',
 
-                    'awesome atmosphere, 8 k, octane rendered, sharp focus, highly detailed, volumetric lighting, illustration, concept art, paint texture, intricate,super detailed picture, the smallest drawing of details, 4k, octane  ,pastel halftones, extremly detailed digital paintingin the style of Midjourney v4',
+                    'awesome atmosphere, 8 k, octane rendered, sharp focus, highly detailed, volumetric lighting, illustration, concept art, paint texture, intricate,super detailed picture, the smallest drawing of details, 4k, octane  ,pastel halftones, in the style of Midjourney v4, extremly detailed digital paintingin',
 
-                    'super detailed picture, art by greg rutkowski and alphonse mucha, pastel halftones, extremly detailed digital paintingin the style of Midjourney v4',
+                    'super detailed picture, art by greg rutkowski and alphonse mucha, pastel halftones, in the style of Midjourney v4 , extremly detailed digital paintingin',
 
-                    'global illumination , super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!,in the style of Midjourney v4',
+                    'global illumination , super detailed picture, the smallest drawing of details, 4k, octane,pastel halftones art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!!,in the style of Midjourney v4, extremly detailed digital paintingin',
 
                     'greg rutkowski and alphonse mucha, super detailed picture, the smallest drawing of details, 4k, octane,in the style of Midjourney v4, extremly detailed digital painting',
 
-                    'highly detailed, digital painting, artstation, concept art, sharp focus, illustration, cinematic lighting, high detail, artstation, octane render, 4 k resolution, masterpiece,pastel halftones , extremly detailed digital paintingin, in the style of Midjourney v4',
+                    'highly detailed, digital painting, artstation, concept art, sharp focus, illustration, cinematic lighting, high detail, artstation, octane render, 4 k resolution, masterpiece,pastel halftones , in the style of Midjourney v4, extremly detailed digital paintingin',
 
-                    'insanely detailed,intricate detail, cinematic, 8 k, featured on artstation, pixiv,super detailed picture, the smallest drawing of details, 4k, octane , extremly detailed digital paintingin, in the style of Midjourney v4',
+                    'insanely detailed,intricate detail, cinematic, 8 k, featured on artstation, pixiv,super detailed picture, the smallest drawing of details, 4k, octane  in the style of Midjourney v4, extremly detailed digital paintingin',
 
                     'studio quality,super detailed picture, the smallest drawing of details, 4k, octane, illustration,pastel halftones, art by! greg rutkowski magali villeneuve wlop! ilya kuvshinov!! , extremly detailed digital paintingin the style of Midjourney v4',
 
@@ -114,9 +114,10 @@ exports.TextImageRedirect = async function(param, param2) {
 
                     const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
 
-
+                    let chanellId = param.channelId;
                     if (param.author.bot) {
                         nameUs = param.embeds[0]['description'].replace(/ .*/, '').replace(/\D/g, "");
+                        // console.log(param);
                     }
                     const exampleEmbed9 = {
                         color: 0x0099ff,
