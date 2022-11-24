@@ -40,6 +40,7 @@ exports.TextImageRedirect = async function(param, param2) {
         }).catch();
     }
 
+
     clearTimeout;
     let neuro = "";
     var source = 'auto';
@@ -85,6 +86,9 @@ exports.TextImageRedirect = async function(param, param2) {
                 const page = await browser.newPage();
                 await page.setDefaultTimeout(0);
 
+
+                // console.log(param);
+
                 try {
 
                     await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
@@ -110,9 +114,9 @@ exports.TextImageRedirect = async function(param, param2) {
                     // setTimeout(async() => {
                     // }, "1000");
 
-                    await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img').then(() => {});
+                    await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > div.mantine-1avyp1d > div > figure > div > img');
 
-                    const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > figure > div > img', (el) => el.getAttribute('src'));
+                    const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > div.mantine-1avyp1d > div > figure > div > img', (el) => el.getAttribute('src'));
 
                     let chanellId = param.channelId;
                     if (param.author.bot) {
