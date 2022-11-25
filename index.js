@@ -21,13 +21,11 @@ client.on('messageCreate', async(message) => {
 
     else if (message.content.substring(0, 2) === "..") {
         TextImageRedirect(message);
-        return false;
     }
 
     // отправляем текстовое сообщение
     else if (message.mentions.has(client.user.id)) {
         TextImageRedirect(message);
-        return false;
     }
     //
     else {
@@ -39,9 +37,14 @@ client.on('messageCreate', async(message) => {
 
 client.on('interactionCreate', async interaction => {
     if (interaction.isButton() && interaction.customId === "stable-dif") {
-        TextImageRedirect(interaction.message, interaction.message.content);
+        const inId = interaction.user.id;
+
+        TextImageRedirect(interaction.message, interaction.message.content, inId);
+        // console.log(interaction.user.id);
 
         await interaction.reply({ content: "Картинка - " + interaction.message.content + " - обновляется. Подождите примерно 17 секунд!", ephemeral: true });
+
+
 
 
     }
