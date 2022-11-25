@@ -25,7 +25,7 @@ exports.keepAlive = function() {
     });
 }
 
-exports.TextImageRedirect = async function(param, param2) {
+exports.TextImageRedirect = async function(param, param2, param3) {
     param.content = param.content.replace(/<(.|\n)*?>/g, '');
     param.channel.sendTyping();
     let nameUs = "";
@@ -141,7 +141,7 @@ exports.TextImageRedirect = async function(param, param2) {
                             .setStyle('SECONDARY'), //PRIMARY, SECONDARY, ALERT or SUCCESS
                         );
                     let bmsg = await param.channel.send({
-                        content: param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(), //neuro
+                        content: `<@${param3 || param.author.id}> ` + param.content.replace(/<(.|\n)*?>/g, '').replace(/\./g, '').trim(), //neuro
                         embeds: [exampleEmbed9],
                         components: [row]
                             // embeds: [exampleEmbed9], 
