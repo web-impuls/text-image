@@ -181,12 +181,6 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                         await bmsg.react('👍');
                         await bmsg.react('👎');
 
-                        setTimeout(async() => {
-                            fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
-                            await browser.close();
-                        }, "100000");
-
-                        await browser.close();
 
                     } catch (err) {
 
@@ -195,6 +189,18 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     }
 
+                    setTimeout(async() => {
+                        fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+
+                        // param.channel.send(`<@${param3 || userId}> Малёхо глюкнуло, очередь перезаписана,  можете продолжать`);
+                        await browser.close();
+                        clearTimeout;
+                        return false;
+                    }, "100000");
+
+
+
+                    await browser.close();
                     return false;
                 })();
 
