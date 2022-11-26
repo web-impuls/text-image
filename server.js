@@ -110,7 +110,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     const browser = await puppeteer.launch({
                         headless: true,
-                        timeout: 100000,
+                        timeout: 200000,
                         args: ['--no-sandbox', '--disable-setuid-sandbox']
                     });
                     const page = await browser.newPage();
@@ -177,18 +177,23 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                                 // embeds: [exampleEmbed9], 
                                 // components: [row] 
                         });
-                        
-                        
-                        
-                        
 
                         await bmsg.react('👍');
                         await bmsg.react('👎');
-                        
-                        
-                        
-                       delete obj[key];
-                       fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+
+                        delete obj[key];
+
+                        fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+                        // setTimeout(async() => {
+                        //     fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+
+                        //     param.channel.send(`<@${param3 || userId}> Малёхо глюкнуло, очередь перезаписана,  можете продолжать`);
+                        //     await browser.close();
+                        //     clearTimeout;
+                        //     return false;
+                        // }, "200000");
+
+
 
 
                     } catch (err) {
@@ -199,14 +204,13 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                     }
 
 
-
-
-
                     await browser.close();
                     return false;
                 })();
 
-
+                // delete obj[key];
+                // fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+                // clearTimeout;
             }
         });
 
