@@ -70,7 +70,8 @@ exports.TextImageRedirect = async function(param, param2, param3) {
             obj[time] = upObj;
 
 
-            fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+            // fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+
             if (!param.author.bot) {
                 let quene = " Ваш номер в очереди - " + Object.keys(obj).length;
 
@@ -182,16 +183,10 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                         await bmsg.react('👎');
 
                         delete obj[key];
+                        await browser.close();
 
                         fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
-                        // setTimeout(async() => {
-                        //     fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
 
-                        //     param.channel.send(`<@${param3 || userId}> Малёхо глюкнуло, очередь перезаписана,  можете продолжать`);
-                        //     await browser.close();
-                        //     clearTimeout;
-                        //     return false;
-                        // }, "200000");
 
 
 
@@ -204,7 +199,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                     }
 
 
-                    await browser.close();
+
                     return false;
                 })();
 
