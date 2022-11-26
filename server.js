@@ -198,9 +198,6 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     }
 
-
-
-                    return false;
                 })();
 
                 // delete obj[key];
@@ -209,5 +206,4 @@ exports.TextImageRedirect = async function(param, param2, param3) {
             }
         });
 
-    return false;
 }
