@@ -177,9 +177,18 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                                 // embeds: [exampleEmbed9], 
                                 // components: [row] 
                         });
+                        
+                        
+                        
+                        
 
                         await bmsg.react('👍');
                         await bmsg.react('👎');
+                        
+                        
+                        
+                       delete obj[key];
+                       fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
 
 
                     } catch (err) {
@@ -189,14 +198,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     }
 
-                    setTimeout(async() => {
-                        fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
 
-                        // param.channel.send(`<@${param3 || userId}> Малёхо глюкнуло, очередь перезаписана,  можете продолжать`);
-                        await browser.close();
-                        clearTimeout;
-                        return false;
-                    }, "100000");
 
 
 
@@ -204,9 +206,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                     return false;
                 })();
 
-                delete obj[key];
-                fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
-                clearTimeout;
+
             }
         });
 
