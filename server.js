@@ -184,7 +184,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     } catch (err) {
 
-                        param.reply("Возникла ошибка, попробуйте ещё раз!");
+                        param.reply("Возникла ошибка, попробуйте ещё раз через 10 секунд, сервер перезагружается!");
                         console.log(err);
 
                     }
