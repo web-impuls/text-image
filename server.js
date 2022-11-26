@@ -123,8 +123,8 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                         await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
 
-                        await page.goto('https://www.mage.space/');
-                        // await page.goto('https://www.mage.space/', { waitUntil: 'networkidle2' });
+                        // await page.goto('https://www.mage.space/');
+                        await page.goto('https://www.mage.space/', { waitUntil: 'networkidle2' });
 
 
 
@@ -183,8 +183,6 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                         setTimeout(async() => {
                             fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
-
-                            param.channel.send(`<@${param3 || userId}> Малёхо глюкнуло, очередь перезаписана,  можете продолжать`);
                             await browser.close();
                         }, "100000");
 
