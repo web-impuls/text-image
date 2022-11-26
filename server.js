@@ -182,10 +182,8 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                         await bmsg.react('👍');
                         await bmsg.react('👎');
 
-                        delete obj[key];
-                        await browser.close();
 
-                        fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+                        await browser.close();
 
 
 
@@ -198,7 +196,12 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     }
 
+                    delete obj[key];
+                    fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+
                 })();
+
+
 
                 // delete obj[key];
                 // fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
