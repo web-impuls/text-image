@@ -92,7 +92,6 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                 });
                 
                 const page = await browser.newPage();
-                // await page.setDefaultTimeout(0);
 
                 if (!param.author.bot) {
                     param.reply("Картинка - " + param.content.replace(/\./g, '') + " - создаётся. Подождите примерно от 17 до 100 секунд!.Это сообщение пропадёт через 8 секунд").then(m => {
