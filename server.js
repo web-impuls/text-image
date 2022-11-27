@@ -103,13 +103,11 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                 try {
 
-                   await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
-                    //page.setDefaultNavigationTimeout(0);
-                    await page.goto('https://www.mage.space/', { waitUntil: networkidle0 });
-                    
-                    await page.waitForTimeout('#search-bar');
-                    await page.type('#search-bar', neuro + ' ' + massText);
-                    await page.click('#ZQvTCDloXyqgqlOiDvup');
+                       await page.setUserAgent('5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36');
+                       await page.goto('https://www.mage.space/', { waitUntil: networkidle0 });
+                       await page.waitForTimeout('#search-bar');
+                       await page.type('#search-bar', neuro + ' ' + massText);
+                       await page.click('#ZQvTCDloXyqgqlOiDvup');
 
                     await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > div.mantine-1avyp1d > div > figure > div > img');
 
