@@ -146,7 +146,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                             }
                             const exampleEmbed9 = {
                                 color: 0x0099ff,
-                                description: `<@${nameUs || param.author.id }> - Автор этого запроса`,
+                                description: `<@${ param.author.id || nameUs }> - Автор этого запроса`,
                                 image: {
                                     url: imgSrc,
                                 },
