@@ -142,11 +142,14 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                             if (param.author.bot) {
                                 nameUs = param.embeds[0]['description'].replace(/ .*/, '').replace(/\D/g, "");
+                                // console.log(param.embeds[0]['description']);
+                                // nameUs = param2.embeds[0]['description'].replace(/ .*/, '').replace(/\D/g, "");
 
                             }
                             const exampleEmbed9 = {
                                 color: 0x0099ff,
-                                description: `<@${ param.author.id || nameUs }> - Автор этого запроса`,
+                                // description: `<@655120325717000222> - Автор этого запроса`,
+                                description: `<@${nameUs || param.author.id}> - Автор этого запроса`,
                                 image: {
                                     url: imgSrc,
                                 },
