@@ -33,7 +33,6 @@ exports.keepAlive = function() {
 
 exports.TextImageRedirect = async function(param, param2, param3) {
     param.content = param.content.replace(/<(.|\n)*?>/g, '');
-    let nameUs;
     param.channel.sendTyping();
     if (param.author.bot && !param.components || param.content == "Возникла ошибка, попробуйте ещё раз!") return false;
     // console.log(param);
