@@ -191,6 +191,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                         } catch (err) {
                             obj["process"] = false;
+                            fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
                             param.reply("Возникла ошибка, попробуйте ещё раз!").then(m => {
                                 setTimeout(() => m.delete(), 10000);
                             }).catch();
