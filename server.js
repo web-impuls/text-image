@@ -56,7 +56,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
             // console.log(neuro);
             setInterval(async() => {
                 if (obj["process"] = true) {
-
+                    return false;
                 } else {
                     clearInterval;
                     return;
