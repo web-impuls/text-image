@@ -55,7 +55,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
             // let perevod = data[0][0][0];
             neuro = data[0][0][0];
             // console.log(neuro);
-            setInterval(() => {
+            setInterval(async() => {
                 if (obj["process"] = true) {
 
                 } else {
@@ -120,7 +120,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                         try {
                             // await page.waitForNavigation({ waitUntil: "domcontentloaded" });
-                            page.setDefaultNavigationTimeout(60000);
+                            page.setDefaultNavigationTimeout(200000);
 
                             await page.goto(url);
 
