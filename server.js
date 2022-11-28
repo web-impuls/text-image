@@ -43,7 +43,6 @@ exports.TextImageRedirect = async function(param, param2, param3) {
         }).catch();
     }
     param.channel.sendTyping();
-    clearInterval;
     let neuro = "";
     var source = 'auto';
     fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=' +
@@ -206,8 +205,12 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     await cluster.idle();
                     await cluster.close();
-                    obj["process"] = false;
-                    fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+                    setTimeout(async() => {
+                        obj["process"] = false;
+                        fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+                        clearTimeout;
+                    }, 500);
+
                     // console.log(obj["process"]);
                 })();
 
