@@ -34,7 +34,7 @@ exports.keepAlive = function() {
 exports.TextImageRedirect = async function(param, param2, param3) {
     param.content = param.content.replace(/<(.|\n)*?>/g, '');
     let nameUs = "";
-    param.channel.sendTyping();
+
     if (param.author.bot && !param.components || param.content == "Возникла ошибка, попробуйте ещё раз!") return false;
     // console.log(param);
     if (!param.author.bot) {
@@ -42,7 +42,8 @@ exports.TextImageRedirect = async function(param, param2, param3) {
             setTimeout(() => m.delete(), 8000);
         }).catch();
     }
-    clearTimeout;
+    param.channel.sendTyping();
+    clearInterval;
     let neuro = "";
     var source = 'auto';
     fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=' +
@@ -54,11 +55,22 @@ exports.TextImageRedirect = async function(param, param2, param3) {
             // let perevod = data[0][0][0];
             neuro = data[0][0][0];
             // console.log(neuro);
+            setInterval(() => {
+                if (obj["process"] = true) {
 
+                } else {
+                    clearInterval;
+                    return;
+                }
+            }, 1000);
 
 
 
             (async function() {
+
+                obj["process"] = true;
+                fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+                // console.log(obj["process"]);
                 const massPromt = [
                     'super detailed picture, 4k, octane ,pastel halftones, Midjourney v4 style color scheme, extremly detailed digital paintingin',
 
@@ -178,7 +190,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                             await bmsg.react('👎');
 
                         } catch (err) {
-
+                            obj["process"] = false;
                             param.reply("Возникла ошибка, попробуйте ещё раз!").then(m => {
                                 setTimeout(() => m.delete(), 10000);
                             }).catch();
@@ -193,6 +205,9 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                     await cluster.idle();
                     await cluster.close();
+                    obj["process"] = false;
+                    fs.writeFileSync(path, JSON.stringify(obj, null, 2), 'utf-8');
+                    // console.log(obj["process"]);
                 })();
 
                 return false;
