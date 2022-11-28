@@ -50,11 +50,11 @@ exports.TextImageRedirect = async function(param, param2, param3) {
         .then((response) => {
             return response.json();
         })
-        .then((data) => {
+        .then(async(data) => {
             // let perevod = data[0][0][0];
             neuro = data[0][0][0];
             // console.log(neuro);
-            setInterval(async() => {
+            await setInterval(() => {
                 if (obj["process"] = true) {
                     return false;
                 } else {
