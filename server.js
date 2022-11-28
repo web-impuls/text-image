@@ -100,7 +100,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                         concurrency: Cluster.CONCURRENCY_PAGE,
                         maxConcurrency: 100,
                         monitor: false,
-                        timeout: 200000,
+                        timeout: 60000,
                         puppeteerOptions: {
                             headless: true,
                             args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -119,7 +119,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
 
                         try {
                             // await page.waitForNavigation({ waitUntil: "domcontentloaded" });
-                            page.setDefaultNavigationTimeout(200000);
+                            page.setDefaultNavigationTimeout(60000);
 
                             await page.goto(url);
 
@@ -148,7 +148,7 @@ exports.TextImageRedirect = async function(param, param2, param3) {
                             // setTimeout(async() => {
                             // }, "1000");
 
-                            await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > div.mantine-1avyp1d > div > figure > div > img', { timeout: 200000 }).then(() => {});
+                            await page.waitForSelector('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > div.mantine-1avyp1d > div > figure > div > img', { timeout: 60000 }).then(() => {});
 
                             const imgSrc = await page.$eval('#mantine-R3bm-body > div > div.mantine-Container-root.mantine-bpygq5 > div > div.mantine-1avyp1d > div > figure > div > img', (el) => el.getAttribute('src'));
 
